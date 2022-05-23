@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const nodemailer = require('nodemailer');
-
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 // View engine setup
@@ -54,8 +54,8 @@ async function sendMail(html) {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass // generated ethereal password
+      user: 'kristofer.lindgren85@ethereal.email', // generated ethereal user
+      pass: 'NBwuKGQNDJrMa284bd' // generated ethereal password
     }
   });
 
@@ -76,4 +76,4 @@ async function sendMail(html) {
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
-app.listen(3000, () => console.log('Server started...'));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
